@@ -33,5 +33,13 @@ def generate_recipe():
     return json.dumps(neural_recipes, ensure_ascii=False).encode('utf8').decode('utf8')
 
 
+@app.after_request
+def add_header(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    response.headers['Content-Type'] = 'application/json'
+    return response
+
+
 if __name__ == "__main__":
     app.run()
