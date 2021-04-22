@@ -1,5 +1,5 @@
 import json
-from fridge_util import Fridge
+from CookIT.fridge_util import Fridge
 import pandas as pd
 import numpy as np
 fridge= Fridge()
