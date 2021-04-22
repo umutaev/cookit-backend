@@ -7,7 +7,7 @@ from CookIT.searcher import Searcher
 
 app = Flask(__name__)
 
-fridge = {}
+fridge = []
 fridge_en = []  # For caching
 fridge_ru = []
 fridge_json = ""
@@ -20,7 +20,7 @@ try:
         for line in f.readlines():
             fridge_ru.append(line.strip())
     for i, item in enumerate(fridge_en):
-        fridge[item] = fridge_ru[i].capitalize()
+        fridge.append({"id": item, "title": fridge_ru[i].capitalize()})
     fridge_json = json.dumps(fridge)
 except FileNotFoundError:
     exit(os.EX_NOTFOUND)
