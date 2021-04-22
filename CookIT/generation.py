@@ -2,7 +2,7 @@ import pandas as pd
 from CookIT.fridge_util import Fridge
 class Generator():
     def __init__(self):
-        self.correlation_matrix=pd.read_csv("correlations.csv", delimiter=',').to_numpy()
+        self.correlation_matrix=pd.read_csv("./CookIT/correlations.csv", delimiter=',').to_numpy()
         self.fridge=Fridge()
     def topnrecipes(self, ingredients:list, n:int):
         ingredients_indexes = self.fridge.ings2indexes(ingredients)

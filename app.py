@@ -4,8 +4,11 @@ import os
 import json
 
 from CookIT.searcher import Searcher
+from CookIT.generation import Generator
 
 app = Flask(__name__)
+
+generator = Generator()
 
 fridge = []
 fridge_en = []  # For caching
@@ -36,7 +39,10 @@ def get_ingredients():
 @app.route('/generate', methods=['POST'])
 def generate_recipe():
     user_fridge = request.get_json()['ingredients']
-    neural_recipes = Searcher(user_fridge).get_suitable_recipes(language='ru')
+    # human_recipes = Searcher(user_fridge).get_suitable_recipes(language='en')
+    neural_recipes = []
+    for index, recipe in enumerate(generator.topnrecipes(user_fridge, 3)):
+        neural_recipes.append({"title": f"Neural #{index}", "instructions": "", "ingredients": recipe})
     return json.dumps(neural_recipes, ensure_ascii=False).encode('utf8').decode('utf8')
 
 
