@@ -1,6 +1,6 @@
 import json
 from google_trans_new import google_translator
-from fridge_util import Fridge
+from CookIT.fridge_util import Fridge
 
 
 class Searcher:

@@ -1,4 +1,4 @@
-from searcher import Searcher
+from CookIT.searcher import Searcher
 
 ingredients_i_have = ["garlic", "milk", "chicken", "pepper", "cabbage", "sugar", "cheese"]
 for recipe in Searcher(ingredients_i_have).get_suitable_recipes(language="ru"):

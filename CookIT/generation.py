@@ -1,5 +1,5 @@
 import pandas as pd
-from fridge_util import Fridge
+from CookIT.fridge_util import Fridge
 class Generator():
     def __init__(self):
         self.correlation_matrix=pd.read_csv("correlations.csv", delimiter=',').to_numpy()
