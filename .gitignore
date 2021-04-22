@@ -3,3 +3,4 @@ templates/
 static/
 __pycache__/
 .idea/
+CookIT/recipes_ru.json

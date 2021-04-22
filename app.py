@@ -39,11 +39,12 @@ def get_ingredients():
 @app.route('/generate', methods=['POST'])
 def generate_recipe():
     user_fridge = request.get_json()['ingredients']
-    # human_recipes = Searcher(user_fridge).get_suitable_recipes(language='en')
+    human_recipes = Searcher(user_fridge).get_suitable_recipes(language='ru')
     neural_recipes = []
     for index, recipe in enumerate(generator.topnrecipes(user_fridge, 3)):
-        neural_recipes.append({"title": f"Neural #{index}", "instructions": "", "ingredients": recipe})
-    return json.dumps(neural_recipes, ensure_ascii=False).encode('utf8').decode('utf8')
+        neural_recipes.append({"title": f"Neural #{index}", "instructions": "", "ingredients": recipe,
+                               "picture_link": None})
+    return json.dumps(neural_recipes + human_recipes, ensure_ascii=False).encode('utf8').decode('utf8')
 
 
 @app.after_request
