@@ -42,9 +42,12 @@ def generate_recipe():
     human_recipes = Searcher(user_fridge).get_suitable_recipes(language='ru')
     neural_recipes = []
     for index, recipe in enumerate(generator.topnrecipes(user_fridge, 3)):
-        neural_recipes.append({"title": f"Neural #{index}", "instructions": "", "ingredients": recipe,
+        recipe_ru = []
+        for ingredient in recipe:
+            recipe_ru.append(fridge_ru[fridge_en.index(ingredient)].capitalize())
+        neural_recipes.append({"title": f"Сгенерированный #{index}", "instructions": "", "ingredients": recipe_ru,
                                "picture_link": None})
-    return json.dumps(neural_recipes + human_recipes, ensure_ascii=False).encode('utf8').decode('utf8')
+    return json.dumps(human_recipes + neural_recipes, ensure_ascii=False).encode('utf8').decode('utf8')
 
 
 @app.after_request
