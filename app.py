@@ -19,6 +19,7 @@ try:
     with open('./CookIT/fridge.txt', 'r', encoding='utf8') as f:
         for line in f.readlines():
             fridge_en.append(line.strip())
+        fridge_en.sort()
     with open('./CookIT/fridge_ru.txt', 'r', encoding='utf8') as f:
         for line in f.readlines():
             fridge_ru.append(line.strip())
