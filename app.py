@@ -23,7 +23,7 @@ try:
         for line in f.readlines():
             fridge_ru.append(line.strip())
     for i, item in enumerate(fridge_en):
-        fridge.append({"id": item, "title": fridge_ru[i].capitalize()})
+        fridge.append({"id": item, "title": item.capitalize()})
     fridge_json = json.dumps(fridge)
 except FileNotFoundError:
     exit(os.EX_NOTFOUND)
